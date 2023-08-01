@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:52984/mydatabase
-    username: myuser
-    password: password
+    url: jdbc:mysql://host.docker.internal:3306/scheduler
+    username: root
+    password:
   jpa:
     properties:
       hibernate:
