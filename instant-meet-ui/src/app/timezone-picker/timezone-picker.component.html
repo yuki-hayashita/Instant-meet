@@ -1,0 +1,6 @@
+<div fxLayout="column">
+    <label for="time-zone">Time Zone</label>
+    <select [(ngModel)]="selectedTimeZone" (change)="onSelectTimeZone()">
+        <option *ngFor="let zone of timeZones" [value]="zone">{{ zone }}</option>
+    </select>
+</div>

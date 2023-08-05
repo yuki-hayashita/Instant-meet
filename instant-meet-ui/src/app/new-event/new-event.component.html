@@ -1,0 +1,30 @@
+<!-- <app-calendar></app-calendar> -->
+<header class="header">
+    <div class="header-content">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <object class="header-logo" data="../../assets/logo-white.svg"></object>
+            <h1 class="header-name">
+                Meet
+                <br>
+                Instantly.
+            </h1>
+        </div>
+        <span class="header-sentence">schedule a event with your friends or co-workers</span>
+    </div>
+</header>
+<div class="event-card">
+    <div class="progress-bar" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="progress-bar-current"></div>
+        <div class="progress-bar-not-current"></div>
+    </div>
+
+    <div class="event-card-content">
+        <div fxLayout="column">
+            <label for="event-name">Event Name</label>
+            <input type="text" id="event-name" placeholder="New Event">
+        </div>
+        <app-timezone-picker (timeZoneSelected)="onTimeZoneSelected($event)"></app-timezone-picker>
+        <app-time-picker (timeChanged)="onTimeChanged($event)"></app-time-picker>
+    </div>
+    
+</div>

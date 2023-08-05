@@ -1,0 +1,18 @@
+select {
+    padding-left: 16px;
+    color: #122963;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
+    height: 46px;
+    appearance: none; /* Remove the default styles applied by the browser */
+    -webkit-appearance: none; /* For cross-browser support on older versions of Safari */
+    border-radius: 10px;
+    border: 2px solid #CED3DC;
+    background-color: #FFF;
+}
+
+label {
+    // color: #122963;
+}

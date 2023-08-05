@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener, ElementRef, Renderer2 } from "@angular/core";
 import { CalendarCreatorService } from "../service/calendar-creator.service";
 import { Day } from "../model/day.model";
 
@@ -9,25 +9,29 @@ import { Day } from "../model/day.model";
 })
 
 export class CalendarComponent implements OnInit {
-  public monthDays: Day[];
 
+  public monthDays: Day[];
   public monthNumber: number;
   public year: number;
-
   public weekDaysName = [];
 
-  constructor(public calendarCreatorService: CalendarCreatorService) {}
+  public isDragging = false;
+  public isHovering = false;
+  public toActive = false;
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, public calendarCreatorService: CalendarCreatorService) {}
 
   ngOnInit(): void {
     this.setMonthDays(this.calendarCreatorService.getCurrentMonth());
 
-    this.weekDaysName.push("Mo");
-    this.weekDaysName.push("Tu");
-    this.weekDaysName.push("We");
-    this.weekDaysName.push("Th");
-    this.weekDaysName.push("Fr");
-    this.weekDaysName.push("Sa");
-    this.weekDaysName.push("Su");
+    this.weekDaysName.push("M");
+    this.weekDaysName.push("T");
+    this.weekDaysName.push("W");
+    this.weekDaysName.push("T");
+    this.weekDaysName.push("F");
+    this.weekDaysName.push("S");
+    this.weekDaysName.push("S");
+
   }
 
   onNextMonth(): void {
@@ -57,4 +61,68 @@ export class CalendarComponent implements OnInit {
     this.monthNumber = this.monthDays[0].monthIndex;
     this.year = this.monthDays[0].year;
   }
+
+  @HostListener('document:mousedown', ['$event'])
+  onMouseDown(event: MouseEvent) {
+    this.isDragging = true;
+
+    const target = event.target as HTMLElement;
+      if (target.tagName.toLowerCase() === 'span' && target.classList.contains('day')) {
+        if (target.classList.contains('active')) {
+          this.toActive = false;
+          target.classList.remove('active');
+        }else {
+          this.toActive = true;
+          target.classList.add('active');
+        }
+      }
+  }
+
+  @HostListener('document:mouseup', ['$event'])
+  onMouseUp(event: MouseEvent) {
+    this.isDragging = false;
+  }
+
+  @HostListener('touchstart', ['$event'])
+  onTouchStart(event: TouchEvent) {
+    event.preventDefault();
+    this.isHovering = true;
+    const target = event.target as HTMLElement;
+      if (target.tagName.toLowerCase() === 'span' && target.classList.contains('day')) {
+        if (target.classList.contains('active')) {
+          this.toActive = false;
+          target.classList.remove('active');
+        }else {
+          this.toActive = true;
+          target.classList.add('active');
+        }
+      }
+  }
+
+  @HostListener('touchend', ['$event'])
+  onTouchEnd(event: TouchEvent) {
+    this.isHovering = false;
+  }
+
+  @HostListener('touchmove', ['$event'])
+onTouchMove(event: TouchEvent) {
+  if (this.isHovering) {
+    // const target= event.touches[0]as HTMLElement;
+    const touch = event.touches[0];
+    const x = touch.clientX;
+    const y = touch.clientY;
+    const target = document.elementFromPoint(x, y) as HTMLElement;
+    console.log(target)
+
+    if (this.toActive && !target.classList.contains('active')) {
+      console.log("adding active")
+      target.classList.add('active');
+    } 
+
+    if (!this.toActive && target.classList.contains('active')) {
+      target.classList.remove('active');
+    }
+  }
+}
+
 }
