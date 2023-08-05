@@ -1,4 +1,5 @@
 package com.geek.scheduler.entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.geek.scheduler.createEvent.Request;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -30,11 +31,11 @@ public class Event {
 
     private ZoneId timeZone;
 
-    @OneToMany(mappedBy = "event")
+    // cascadeでeventに変化が起きる際に自動的に変わる。
+    @JsonManagedReference
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<TimeSlot> timeSlots;
 
-    @OneToMany(mappedBy = "event")
-    private List<User> users;
 
     public Event(Request request) {
         this.title = request.getTitle();

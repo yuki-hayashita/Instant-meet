@@ -1,6 +1,6 @@
 package com.geek.scheduler.entity;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,17 +10,16 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "time_slots")
-public class TimeSlot {
+@Table(name = "availabilities")
+public class Availability {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto-generated id
     private Long id;
 
-    @JsonProperty("start_time")
-    private ZonedDateTime startTime;
+    private ZonedDateTime start_time;
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Event event;
+    @JoinColumn(name = "user_id")
+    private User user;
 }

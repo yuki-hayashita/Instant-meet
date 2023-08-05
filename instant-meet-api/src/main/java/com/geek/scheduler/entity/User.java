@@ -1,5 +1,6 @@
 package com.geek.scheduler.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,10 +17,7 @@ public class User {
     private Long id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Event event;
-
-    @OneToMany(mappedBy = "user")
-    private List<TimeSlot> timeSlots;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Availability> availabilities;
 }
