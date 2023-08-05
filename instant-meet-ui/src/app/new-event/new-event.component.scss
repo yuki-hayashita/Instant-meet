@@ -95,7 +95,15 @@
         margin: 16px;
 
         input {
-            @include input
+            @include input;
+            height: 36px;
+        }
+
+        app-time-picker {
+            ::ng-deep select {
+                @include input;
+                width: 100%;
+            }
         }
 
     }

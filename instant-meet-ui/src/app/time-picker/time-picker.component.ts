@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import * as moment from 'moment'; 
 
 @Component({
@@ -11,10 +11,13 @@ export class TimePickerComponent implements OnInit {
 
   selectedTime: string;
 
+  @Input() initialTime: string;
   @Output() timeChanged = new EventEmitter<string>();
 
   ngOnInit(): void {
+    this.selectedTime = this.initialTime;
     this.generateHoursArray();
+    this.onTimeChange();
   }
 
   generateHoursArray(): void {
@@ -31,7 +34,7 @@ export class TimePickerComponent implements OnInit {
 
   onTimeChange(): void {
     const timeMoment = moment(this.selectedTime, 'hh:mm A'); // Parse the selected time with format "hh:mm AM/PM"
-    this.selectedTime = timeMoment.format('HH:mm'); // Convert to military time format "HH:mm"
-    this.timeChanged.emit(this.selectedTime);
+    // this.selectedTime = timeMoment.format('HH:mm'); // Convert to military time format "HH:mm"
+    this.timeChanged.emit(timeMoment.format('HH:mm'));
   }
 }

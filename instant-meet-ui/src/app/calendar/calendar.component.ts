@@ -67,7 +67,7 @@ export class CalendarComponent implements OnInit {
     this.isDragging = true;
 
     const target = event.target as HTMLElement;
-      if (target.tagName.toLowerCase() === 'span' && target.classList.contains('day')) {
+      if (target.classList.contains('day')) {
         if (target.classList.contains('active')) {
           this.toActive = false;
           target.classList.remove('active');
@@ -88,7 +88,15 @@ export class CalendarComponent implements OnInit {
     event.preventDefault();
     this.isHovering = true;
     const target = event.target as HTMLElement;
-      if (target.tagName.toLowerCase() === 'span' && target.classList.contains('day')) {
+    if (target.tagName == 'BUTTON') {
+      if (target.className == 'previous') {
+        this.onPreviousMonth();
+      } 
+      if (target.className == 'next') {
+        this.onNextMonth();
+      } 
+    } else {
+      if (target.classList.contains('day')) {
         if (target.classList.contains('active')) {
           this.toActive = false;
           target.classList.remove('active');
@@ -97,6 +105,7 @@ export class CalendarComponent implements OnInit {
           target.classList.add('active');
         }
       }
+    }
   }
 
   @HostListener('touchend', ['$event'])

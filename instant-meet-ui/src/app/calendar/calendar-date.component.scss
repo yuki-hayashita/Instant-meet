@@ -3,13 +3,16 @@
 /* Default styling for the day element */
 .day {
   /* Add your desired default styles for the day element here */
+  width: 32px;
+  height: 32px;
   background-color: white;
   // padding: 8px;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
 }
 
 /* Styling for the day element when it's active (during drag) */
 .day.active {
-  background-color: blue;
+  border-radius: 10px;
+  background: #5E8BFF;
   color: white;
 }

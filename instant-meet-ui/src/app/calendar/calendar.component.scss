@@ -7,8 +7,17 @@
 //     }
 // }
 
+.month-tag {
+  color: #122963;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .calendar {
-  width: 300px;
+  // width: 300px;
   text-align: center;
   user-select: none;
 
@@ -17,13 +26,20 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 
-    .active {
-      background-color: blue;
+    .day {
+      width: 100%;
+      height: 100%;
+    }
+
+    .day.active {
+      border-radius: 10px;
+      background: #5E8BFF;
+      color: white;
     }
   }
   
   .today {
-    background-color: red;
+    // background-color: red;
   }
 
 }

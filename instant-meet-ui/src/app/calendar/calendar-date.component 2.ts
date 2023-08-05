@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/
 
 @Component({
   selector: 'app-calendar-date',
-  template: '<div class="day" #dateElement>{{ date }}</div>',
+  template: '<span class="day" #dateElement>{{ date }}</span>',
   styleUrls: ["./calendar-date.component.scss"],
 })
 export class CalendarDateComponent {

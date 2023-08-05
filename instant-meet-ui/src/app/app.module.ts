@@ -10,7 +10,7 @@ import { NewEventComponent } from './new-event/new-event.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
+// import { MatButtonModule } from '@angular/material/button';
 import { TimezonePickerComponent } from './timezone-picker/timezone-picker.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 
@@ -30,7 +30,6 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule,
   ],
   providers: [CalendarCreatorService],
   bootstrap: [AppComponent]
