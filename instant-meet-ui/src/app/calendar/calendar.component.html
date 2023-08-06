@@ -1,1 +1,20 @@
-<p>calendar works!</p>
+<div>
+  <button (click)="onPreviousMonth()"> Previous </button>
+  <span> {{ calendarCreatorService.getMonthName(monthNumber) }} &nbsp; {{ year }} </span>
+  <button (click)="onNextMonth()"> Next </button>
+</div>
+
+<br>
+
+
+<div class="calendar">
+
+  <div class="date-grid">
+    <span *ngFor='let weekDay of weekDaysName' class="dayOfWeek" >
+      {{ weekDay }}
+    </span>
+    <app-calendar-date *ngFor='let day of monthDays' class="day" [date]="day.dayNumber" [isDragging]="isDragging" [isHovering]="isHovering" [toActive]="toActive" [ngClass]="{'today': day.today === true}">
+      <!-- {{ day.dayNumber }} -->
+    </app-calendar-date>
+  </div>
+</div>

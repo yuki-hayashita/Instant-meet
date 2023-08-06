@@ -3,15 +3,26 @@ import { Day } from "../model/day.model";
 export class CalendarCreatorService {
   private currentYear: number;
   private currentMonthIndex: number;
-S
+  private currentDate: number;
+
   constructor() {
     let date = new Date();
     this.currentYear = date.getFullYear();
-    this.currentMonthIndex = date.getMonth(); 
+    this.currentMonthIndex = date.getMonth()+1; 
+    this.currentDate = date.getDate();
   }
 
   public getCurrentMonth(): Day[] {
     return this.getMonth(this.currentMonthIndex, this.currentYear);
+  }
+
+  public getToday(day: Day): Boolean {
+
+    if (day.year !== this.currentYear) return false;
+    if (day.monthIndex !== this.currentMonthIndex) return false;
+    if (day.dayNumber !== this.currentDate) return false;
+
+    return true;
   }
 
   public getMonth(monthIndex: number, year: number): Day[] {
@@ -32,7 +43,9 @@ S
 
     let countDaysInMonth = new Date(year, monthIndex +1, 0).getDate();
     for (let i = 2; i < countDaysInMonth +1; i++) {
-      days.push(this.createDay(i, monthIndex, year));
+      let newDate : Day = this.createDay(i, monthIndex, year);
+      if (this.getToday(newDate)) newDate.today = true;
+      days.push(newDate);
     }
 
     return days;

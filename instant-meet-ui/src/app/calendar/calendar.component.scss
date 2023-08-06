@@ -1,0 +1,29 @@
+// .calendar {
+//     width: 210px;
+  
+//     .day {
+//       width: 30px;
+//       display: inline-block;
+//     }
+// }
+
+.calendar {
+  width: 300px;
+  text-align: center;
+  user-select: none;
+
+
+  .date-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    .active {
+      background-color: blue;
+    }
+  }
+  
+  .today {
+    background-color: red;
+  }
+
+}

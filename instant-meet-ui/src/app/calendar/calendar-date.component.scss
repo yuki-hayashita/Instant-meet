@@ -1,0 +1,15 @@
+/* calendar-date.component.scss */
+
+/* Default styling for the day element */
+.day {
+  /* Add your desired default styles for the day element here */
+  background-color: white;
+  // padding: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Styling for the day element when it's active (during drag) */
+.day.active {
+  background-color: blue;
+  color: white;
+}
