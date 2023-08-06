@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ApiService } from '../service/api.service';
+import { ApiService, EventResponse } from '../service/api.service';
 import { Router } from '@angular/router';
 import { CalendarComponent } from '../calendar/calendar.component';
 
@@ -19,9 +19,9 @@ export class NewEventComponent {
 
   onCreateEvent() {
     const dates = this.calendarComponent.selectedDates;
-    this.apiService.createEvent().subscribe(
-      (response: any) => {
-        const hashValue = response; // Replace 'hash' with the actual property name in your API response
+    this.apiService.createEvent(this.eventName, dates, this.selectedEarliestTime, this.selectedLatestTime, this.selectedTimeZone).subscribe(
+      (response: EventResponse) => {
+        const hashValue = response.link; // Replace 'hash' with the actual property name in your API response
         console.log(hashValue)
         // Use the hash value to navigate to the desired page with the hash in the URL
         this.router.navigate(['/fill-availability', hashValue]); // Replace 'your-page' with the actual route path of the destination page
