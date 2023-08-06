@@ -8,7 +8,7 @@ export class CalendarCreatorService {
   constructor() {
     let date = new Date();
     this.currentYear = date.getFullYear();
-    this.currentMonthIndex = date.getMonth()+1; 
+    this.currentMonthIndex = date.getMonth(); 
     this.currentDate = date.getDate();
   }
 
@@ -31,7 +31,7 @@ export class CalendarCreatorService {
     let firstday = this.createDay(1, monthIndex, year);
 
     //create empty days
-    for (let i = 1; i < firstday.weekDayNumber; i++) {
+    for (let i = 0; i < firstday.weekDayNumber; i++) {
       days.push({
         weekDayNumber: i,
         monthIndex: monthIndex,
@@ -52,7 +52,7 @@ export class CalendarCreatorService {
   }
 
   public getMonthName(monthIndex: number): string {
-    switch (monthIndex) {
+    switch (monthIndex+1) {
       case 1:
         return "January";      
       case 2:
@@ -77,6 +77,8 @@ export class CalendarCreatorService {
         return "November";
       case 12:
         return "December";
+      case 13:
+        return "January";
 
       default:
         return "|" + monthIndex;

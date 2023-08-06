@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/
 
 @Component({
   selector: 'app-calendar-date',
-  template: '<div class="day" #dateElement>{{ date }}</div>',
+  template: '<div class="day" [attr.dayNumber]="date" #dateElement>{{ date }}</div>',
   styleUrls: ["./calendar-date.component.scss"],
 })
 export class CalendarDateComponent {
@@ -12,27 +12,26 @@ export class CalendarDateComponent {
   @Input() isHovering: boolean = false;
   @ViewChild('dateElement') dateElement!: ElementRef<HTMLSpanElement>;
 
-  @HostListener('mouseenter')
-  @HostListener('touchstart', ['$event'])
-  onPointerEnter(event?: TouchEvent) {
-      if (event) {
-        // event.preventDefault();
-        // this.handleTouch(event);
-      } else {
-    if (this.isDragging) {
-        const target: HTMLElement = this.dateElement.nativeElement;
+  // @HostListener('mouseenter')
+  // onPointerEnter(event?: TouchEvent) {
+  //     if (event) {
+  //       // event.preventDefault();
+  //       // this.handleTouch(event);
+  //     } else {
+  //   if (this.isDragging) {
+  //       const target: HTMLElement = this.dateElement.nativeElement;
 
-        if (this.toActive && !target.classList.contains('active')) {
-          target.classList.add('active');
-        } 
+  //       if (this.toActive && !target.classList.contains('active')) {
+  //         target.classList.add('active');
+  //       } 
 
-        if (!this.toActive && target.classList.contains('active')) {
-          target.classList.remove('active');
-        }
-      }
+  //       if (!this.toActive && target.classList.contains('active')) {
+  //         target.classList.remove('active');
+  //       }
+  //     }
     
-  }
-}
+  // }
+// }
 
 // @HostListener('touchstart', ['$event'])
 // onTouchStart(event: TouchEvent) {
