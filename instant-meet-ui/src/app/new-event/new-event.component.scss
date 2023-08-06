@@ -106,6 +106,14 @@
             }
         }
 
+        &-create-button {
+            @include input;
+            width: 100%;
+            border: none;
+            background: black;
+            color: white;
+        }
+
     }
 
     
