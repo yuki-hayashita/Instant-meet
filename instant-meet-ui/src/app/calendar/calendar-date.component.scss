@@ -6,8 +6,9 @@
   width: 32px;
   height: 32px;
   background-color: white;
-  // padding: 8px;
-  // border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Styling for the day element when it's active (during drag) */
