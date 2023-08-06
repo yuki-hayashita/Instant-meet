@@ -22,6 +22,13 @@
             <input type="text" id="event-name" placeholder="Unkown User">
         </div>
         <app-timezone-picker ></app-timezone-picker>
+
+        <div class="grid-container">
+            <div *ngFor="let row of rows" class="grid-row">
+              <div *ngFor="let col of columns" class="grid-item"></div>
+            </div>
+        </div>
+        
     </div>
 
     <!-- <button> Next </button> -->
