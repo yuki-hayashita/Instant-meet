@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimezonePickerComponent } from './timezone-picker/timezone-picker.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { FillAvailabilityComponent } from './fill-availability/fill-availability.component';
+import { ApiService } from './service/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,9 @@ import { FillAvailabilityComponent } from './fill-availability/fill-availability
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [CalendarCreatorService],
+  providers: [CalendarCreatorService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

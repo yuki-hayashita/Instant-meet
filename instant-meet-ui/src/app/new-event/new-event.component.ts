@@ -12,6 +12,7 @@ export class NewEventComponent {
   selectedTimeZone: string;
   selectedEarliestTime: string;
   selectedLatestTime: string;
+  eventName: string;
   @ViewChild(CalendarComponent) calendarComponent;
 
   constructor(private apiService: ApiService, private router: Router) {}
@@ -20,8 +21,8 @@ export class NewEventComponent {
     const dates = this.calendarComponent.selectedDates;
     this.apiService.createEvent().subscribe(
       (response: any) => {
-        const hashValue = response.hash; // Replace 'hash' with the actual property name in your API response
-        
+        const hashValue = response; // Replace 'hash' with the actual property name in your API response
+        console.log(hashValue)
         // Use the hash value to navigate to the desired page with the hash in the URL
         this.router.navigate(['/fill-availability', hashValue]); // Replace 'your-page' with the actual route path of the destination page
       },

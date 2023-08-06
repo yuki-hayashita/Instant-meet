@@ -4,8 +4,9 @@ import { FillAvailabilityComponent } from './fill-availability/fill-availability
 import { NewEventComponent } from './new-event/new-event.component';
 
 const routes: Routes = [
-  { path: '', component: NewEventComponent },
+  { path: 'createEvent', component: NewEventComponent },
   { path: 'fill-availability/:hash', component: FillAvailabilityComponent },
+  { path: '', redirectTo: '/createEvent', pathMatch: 'full' },
   { path: '**', component: NewEventComponent }
 ];
 

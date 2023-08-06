@@ -21,7 +21,7 @@
     <div class="event-card-content">
         <div fxLayout="column">
             <label for="event-name">Event Name</label>
-            <input type="text" id="event-name" placeholder="New Event">
+            <input type="text" id="event-name" placeholder="New Event" [(ngModel)]="eventName">
         </div>
         <app-timezone-picker (timeZoneSelected)="onTimeZoneSelected($event)"></app-timezone-picker>
 
@@ -41,6 +41,6 @@
         <app-calendar></app-calendar>
     </div>
 
-    <button ((click)="onCreateEvent()")> Next </button>
+    <button (click)="onCreateEvent()"> Next </button>
     
 </div>
