@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Getter
@@ -36,6 +35,9 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<TimeSlot> timeSlots;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    private List<Availability> availabilities;
 
     public Event(Request request) {
         this.title = request.getTitle();

@@ -1,6 +1,7 @@
 package com.geek.scheduler.createEvent;
 
 import com.geek.scheduler.entity.Event;
+import com.geek.scheduler.entity.EventRepository;
 import com.geek.scheduler.entity.TimeSlot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Service
 public class CreateEventService {
     @Autowired
-    private CreateEventRepository repository;
+    private EventRepository repository;
 
     public Event createEvent(Request request) {
         String link = UUID.randomUUID().toString();
@@ -33,7 +34,7 @@ public class CreateEventService {
                 timeSlot.setEvent(event);
                 timeSlots.add(timeSlot);
             }
-            time = time.plusMinutes(15);
+            time = time.plusMinutes(30);
         }
         event.setTimeSlots(timeSlots);
         event = repository.save(event);
