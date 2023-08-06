@@ -34,7 +34,7 @@ public class CreateEventService {
                 timeSlot.setEvent(event);
                 timeSlots.add(timeSlot);
             }
-            time = time.plusMinutes(15);
+            time = time.plusMinutes(30);
         }
         event.setTimeSlots(timeSlots);
         event = repository.save(event);
