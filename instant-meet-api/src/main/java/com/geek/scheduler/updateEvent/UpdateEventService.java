@@ -35,6 +35,7 @@ public class UpdateEventService {
             Availability availability = new Availability();
             availability.setStart_time(start_time);
             availability.setUser(user);
+            availability.setEvent(event);
             availabilityRepository.save(availability);
         }
     }
