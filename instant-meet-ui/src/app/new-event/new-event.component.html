@@ -13,10 +13,10 @@
     </div>
 </header>
 <div class="event-card">
-    <div class="progress-bar" fxLayout="row" fxLayoutAlign="space-between center">
+    <!-- <div class="progress-bar" fxLayout="row" fxLayoutAlign="space-between center">
         <div class="progress-bar-current"></div>
         <div class="progress-bar-not-current"></div>
-    </div>
+    </div> -->
 
     <div class="event-card-content">
         <div fxLayout="column">
@@ -40,5 +40,7 @@
     <div class="event-card-content">
         <app-calendar></app-calendar>
     </div>
+
+    <button ((click)="onCreateEvent()")> Next </button>
     
 </div>

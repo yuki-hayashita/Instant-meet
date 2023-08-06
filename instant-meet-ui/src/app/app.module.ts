@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { MatButtonModule } from '@angular/material/button';
 import { TimezonePickerComponent } from './timezone-picker/timezone-picker.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
+import { FillAvailabilityComponent } from './fill-availability/fill-availability.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
     CalendarDateComponent,
     NewEventComponent,
     TimezonePickerComponent,
-    TimePickerComponent
+    TimePickerComponent,
+    FillAvailabilityComponent
   ],
   imports: [
     BrowserModule,
